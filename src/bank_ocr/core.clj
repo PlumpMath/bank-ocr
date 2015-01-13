@@ -1,6 +1,6 @@
 (ns bank-ocr.core)
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn parse-digit
+  "Parse a digit written using pipes and underscores"
+  [digit]
+  0)
