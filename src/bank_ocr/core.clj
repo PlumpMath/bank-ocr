@@ -36,33 +36,17 @@
      "|_|"
      " _|"] 9))
 
+(defn transpose
+  "Transpose a seq of seqs, turning rows into columns"
+  [coll]
+  (partition (count coll) (apply interleave coll)))
+
 (defn entry->digits
   "Convert an entry to a sequence of digits"
   [entry]
-  [[" _ "
-    "| |"
-    "|_|"]
-   [" _ "
-    "| |"
-    "|_|"]
-   [" _ "
-    "| |"
-    "|_|"]
-   [" _ "
-    "| |"
-    "|_|"]
-   [" _ "
-    "| |"
-    "|_|"]
-   [" _ "
-    "| |"
-    "|_|"]
-   [" _ "
-    "| |"
-    "|_|"]
-   [" _ "
-    "| |"
-    "|_|"]
-   [" _ "
-    "| |"
-    "|_|"]])
+  (->> entry
+       butlast
+       (map (partial partition 3))
+       transpose
+       (map #(map (partial apply str) %))
+       (map vec)))
