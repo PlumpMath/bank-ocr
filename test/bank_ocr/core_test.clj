@@ -6,4 +6,8 @@
   (testing "should parse 0"
     (is (= (parse-digit [" _ "
                          "| |"
-                         "|_|"]) 0))))
+                         "|_|"]) 0)))
+  (testing "should parse 1"
+    (is (= (parse-digit ["   "
+                         "  |"
+                         "  |"]) 1))))
