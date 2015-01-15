@@ -36,7 +36,8 @@
      "|_|"] 8
     [" _ "
      "|_|"
-     " _|"] 9))
+     " _|"] 9
+    :else   :?))
 
 (defn transpose
   "Transpose a seq of seqs, turning rows into columns"

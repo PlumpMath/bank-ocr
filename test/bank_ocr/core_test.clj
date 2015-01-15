@@ -505,7 +505,25 @@
    "|_||_||_||_||_||_||_| _|  |"
    "                           "])
 
+(def account-2
+  ["    _  _  _  _  _  _     _ "
+   "|_||_|| || ||_   |  |  | _ "
+   "  | _||_||_||_|  |  |  | _|"
+   "                           "])
+
+(def account-3
+  ["    _  _     _  _  _  _  _ "
+   "  | _| _||_| _ |_   ||_||_|"
+   "  ||_  _|  | _||_|  ||_| _ "
+   "                           "])
+
 (deftest illegible-account-numbers
   (testing "should parse 000000051"
     (is (= (entry->account-number account-1)
-           [0 0 0 0 0 0 0 5 1]))))
+           [0 0 0 0 0 0 0 5 1])))
+  (testing "should parse 49006771? with errors"
+    (is (= (entry->account-number account-2)
+           [4 9 0 0 6 7 7 1 :?])))
+  (testing "should parse 1234?678? with errors"
+    (is (= (entry->account-number account-3)
+           [1 2 3 4 :? 6 7 8 :?]))))
