@@ -498,3 +498,14 @@
     (is (not (valid-account-number? [4 9 0 0 6 7 7 1 5]))))
   (testing "should not validate 012345678"
     (is (not (valid-account-number? [0 1 2 3 4 5 6 7 8])))))
+
+(def account-1
+  [" _  _  _  _  _  _  _  _    "
+   "| || || || || || || ||_   |"
+   "|_||_||_||_||_||_||_| _|  |"
+   "                           "])
+
+(deftest illegible-account-numbers
+  (testing "should parse 000000051"
+    (is (= (entry->account-number account-1)
+           [0 0 0 0 0 0 0 5 1]))))
