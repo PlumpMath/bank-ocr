@@ -63,13 +63,17 @@
 (defn parse-file
   "Read and parse account numbers from a file"
   [filename]
-  (->> (line-seq (reader filename))
-       (map (fn [s]
-              (let [n (- 27 (count s))
-                    padding (apply str (repeat n \space))]
-                (str s padding))))
-       (partition 4)
-       (map entry->account-number)))
+  (let [num-digits 9
+        digit-width 3
+        pad-lines (fn [s]
+                    (let [n (- (* num-digits digit-width)
+                               (count s))
+                          padding (apply str (repeat n \space))]
+                      (str s padding)))]
+    (->> (line-seq (reader filename))
+         (map pad-lines)
+         (partition 4)
+         (map entry->account-number))))
 
 (defn -main
   [filename]
