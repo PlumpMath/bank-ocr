@@ -1,9 +1,12 @@
 (ns bank-ocr.core
-  (:require [bank-ocr.account :as account])
+  (:require [clojure.java.io :refer [writer]]
+            [bank-ocr.account :as account])
   (:gen-class))
 
 (defn -main
-  [filename]
-  (let [accounts (account/parse-file filename)]
-    (doseq [account accounts]
-      (println (apply str account)))))
+  [in-file out-file]
+  (let [accounts (account/parse-file in-file)]
+    (with-open [w (writer out-file)]
+      (doseq [account accounts]
+        (.write w (account/print-account-number account))
+        (.write w "\n")))))
