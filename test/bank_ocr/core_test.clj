@@ -546,3 +546,12 @@
   (testing "validated account numbers should be annotated with ERR"
     (is (= (print-account-number [8 8 8 8 8 8 8 8 8])
            "888888888 ERR"))))
+
+(deftest parse-files-with-errors
+  (let [account-numbers (parse-file "examples3.txt")]
+    (testing "should parse all account numbers regardless of errors in a file"
+      (is (= (count account-numbers) 3))
+      (is (= account-numbers
+             [[0 0 0 0 0 0 0 5 1]
+              [4 9 0 0 6 7 7 1 :?]
+              [1 2 3 4 :? 6 7 8 :?]])))))
