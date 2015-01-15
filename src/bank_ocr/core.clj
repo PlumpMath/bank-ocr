@@ -84,10 +84,15 @@
                  (reduce +))]
     (zero? (mod sum 11))))
 
+(defn illegible-account-number?
+  "Returns true if an account number has any illegible digits"
+  [account-number]
+  (some #{:?} account-number))
+
 (defn print-account-number
   "Return an account-number as a string with annotations"
   [account-number]
-  (let [annotation (cond (some #{:?} account-number) "ILL"
+  (let [annotation (cond (illegible-account-number? account-number) "ILL"
                          (not (valid-account-number? account-number)) "ERR"
                          :else nil)
         s (->> account-number
