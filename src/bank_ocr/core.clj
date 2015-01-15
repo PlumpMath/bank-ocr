@@ -1,5 +1,6 @@
 (ns bank-ocr.core
-  (require [clojure.core.match :refer [match]]))
+  (require [clojure.core.match :refer [match]]
+           [clojure.java.io :refer [reader]]))
 
 (defn parse-digit
   "Parse a digit written using pipes and underscores"
@@ -57,3 +58,14 @@
   (->> entry
        entry->digits
        (map parse-digit)))
+
+(defn parse-file
+  "Read and parse account numbers from a file"
+  [filename]
+  (->> (line-seq (reader filename))
+       (map (fn [s]
+              (let [n (- 27 (count s))
+                    padding (apply str (repeat n \space))]
+                (str s padding))))
+       (partition 4)
+       (map entry->account-number)))
