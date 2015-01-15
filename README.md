@@ -31,7 +31,48 @@ account numbers.
 Simply call `lein run` on the sample file provided.
 
 ```
-$ lein run examples.txt
+$ lein run examples1.txt
+```
+
+## User Story #2
+
+You find the machine sometimes goes wrong while scanning. You will
+need to validate that the numbers are valid account numbers using a
+checksum. This can be calculated as follows:
+
+```
+account number:  3  4  5  8  8  2  8  6  5
+position names:  d9 d8 d7 d6 d5 d4 d3 d2 d1
+```
+
+checksum calculation:
+
+```
+((1*d1) + (2*d2) + (3*d3) + ... + (9*d9)) mod 11 == 0
+```
+
+### User Story #3
+
+Your boss is keen to see your results. He asks you to write out a file of your findings, one for each input file, in this format:
+
+```
+457508000
+664371495 ERR
+86110??36 ILL
+```
+
+The output file has one account number per row. If some characters are
+illegible, they are replaced by a ?. In the case of a wrong checksum,
+or illegible number, this is noted in a second column indicating
+status.
+
+### Running User Story #3
+
+Simply call `lein run` on the sample file provided, and specify an
+output file.
+
+```
+$ lein run examples3.txt out3.txt
 ```
 
 ## License
