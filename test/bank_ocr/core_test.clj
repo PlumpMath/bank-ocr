@@ -485,4 +485,12 @@
 
 (deftest validating-account-numbers
   (testing "should validate 345882865"
-    (is (valid-account-number? [3 4 5 8 8 2 8 6 5]))))
+    (is (valid-account-number? [3 4 5 8 8 2 8 6 5])))
+  (testing "should validate 711111111"
+    (is (valid-account-number? [7 1 1 1 1 1 1 1 1])))
+  (testing "should validate 123456789"
+    (is (valid-account-number? [1 2 3 4 5 6 7 8 9])))
+  (testing "should validate 490867715"
+    (is (valid-account-number? [4 9 0 8 6 7 7 1 5])))
+  (testing "should validate 888888888"
+    (is (not (valid-account-number? [8 8 8 8 8 8 8 8 8])))))

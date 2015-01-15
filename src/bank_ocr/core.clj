@@ -78,7 +78,10 @@
 (defn valid-account-number?
   "Validate an account number by applying a checksum"
   [account-number]
-  true)
+  (let [digit-positions (reverse (range 1 10))
+        sum (->> (map * account-number digit-positions)
+                 (reduce +))]
+    (zero? (mod sum 11))))
 
 (defn -main
   [filename]
