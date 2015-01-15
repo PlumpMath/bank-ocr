@@ -430,3 +430,8 @@
             [" _ "
              "|_|"
              " _|"]]))))
+
+(deftest entry-to-account-numbers
+  (testing "should convert 000000000"
+    (is (= (entry->account-number zeroes)
+           [0 0 0 0 0 0 0 0 0]))))

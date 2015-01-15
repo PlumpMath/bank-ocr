@@ -50,3 +50,7 @@
        transpose
        (map #(map (partial apply str) %))
        (map vec)))
+
+(defn entry->account-number
+  [entry]
+  [0 0 0 0 0 0 0 0 0])
