@@ -437,4 +437,31 @@
            [0 0 0 0 0 0 0 0 0])))
   (testing "should convert 111111111"
     (is (= (entry->account-number ones)
-           [1 1 1 1 1 1 1 1 1]))))
+           [1 1 1 1 1 1 1 1 1])))
+  (testing "should convert 222222222"
+    (is (= (entry->account-number twos)
+           [2 2 2 2 2 2 2 2 2])))
+  (testing "should convert 333333333"
+    (is (= (entry->account-number threes)
+           [3 3 3 3 3 3 3 3 3])))
+  (testing "should convert 444444444"
+    (is (= (entry->account-number fours)
+           [4 4 4 4 4 4 4 4 4])))
+  (testing "should convert 555555555"
+    (is (= (entry->account-number fives)
+           [5 5 5 5 5 5 5 5 5])))
+  (testing "should convert 666666666"
+    (is (= (entry->account-number sixes)
+           [6 6 6 6 6 6 6 6 6])))
+  (testing "should convert 777777777"
+    (is (= (entry->account-number sevens)
+           [7 7 7 7 7 7 7 7 7])))
+  (testing "should convert 888888888"
+    (is (= (entry->account-number eights)
+           [8 8 8 8 8 8 8 8 8])))
+  (testing "should convert 999999999"
+    (is (= (entry->account-number nines)
+           [9 9 9 9 9 9 9 9 9])))
+  (testing "should convert 123456789"
+    (is (= (entry->account-number all-digits)
+           [1 2 3 4 5 6 7 8 9]))))
