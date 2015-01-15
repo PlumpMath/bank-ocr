@@ -542,4 +542,7 @@
     (is (= (print-account-number [4 9 0 0 6 7 7 1 :?])
            "49006771? ILL"))
     (is (= (print-account-number [1 2 3 4 :? 6 7 8 :?])
-           "1234?678? ILL"))))
+           "1234?678? ILL")))
+  (testing "validated account numbers should be annotated with ERR"
+    (is (= (print-account-number [8 8 8 8 8 8 8 8 8])
+           "888888888 ERR"))))

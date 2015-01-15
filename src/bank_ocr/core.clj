@@ -87,13 +87,15 @@
 (defn print-account-number
   "Return an account-number as a string with annotations"
   [account-number]
-  (let [annotation (when (some #{:?} account-number) "ILL")
+  (let [annotation (cond (some #{:?} account-number) "ILL"
+                         (not (valid-account-number? account-number)) "ERR"
+                         :else nil)
         s (->> account-number
                (map (fn [digit] (if (keyword? digit) (name digit) digit)))
                (apply str))]
     (if annotation
-      s
-      (str s " " annotation))))
+      (str s " " annotation)
+      s)))
 
 (defn -main
   [filename]
