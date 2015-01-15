@@ -53,4 +53,6 @@
 
 (defn entry->account-number
   [entry]
-  [0 0 0 0 0 0 0 0 0])
+  (->> entry
+       entry->digits
+       (map parse-digit)))

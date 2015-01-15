@@ -434,4 +434,7 @@
 (deftest entry-to-account-numbers
   (testing "should convert 000000000"
     (is (= (entry->account-number zeroes)
-           [0 0 0 0 0 0 0 0 0]))))
+           [0 0 0 0 0 0 0 0 0])))
+  (testing "should convert 111111111"
+    (is (= (entry->account-number ones)
+           [1 1 1 1 1 1 1 1 1]))))
