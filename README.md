@@ -1,6 +1,6 @@
 # bank-ocr
 
-Your manager has reently purchased a machine that assists in reading
+Your manager has recently purchased a machine that assists in reading
 letters and faxes sent in by branch offices. The machine scans the
 paper documents, and produces a file with a number of entries. You
 will write a program to parse this file.
@@ -53,7 +53,8 @@ checksum calculation:
 
 ### User Story #3
 
-Your boss is keen to see your results. He asks you to write out a file of your findings, one for each input file, in this format:
+Your boss is keen to see your results. He asks you to write out a file
+of your findings, one for each input file, in this format:
 
 ```
 457508000
