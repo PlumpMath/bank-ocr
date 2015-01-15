@@ -467,7 +467,7 @@
            [1 2 3 4 5 6 7 8 9]))))
 
 (deftest parsing-files
-  (let [account-numbers (parse-file "examples.txt")]
+  (let [account-numbers (parse-file "examples1.txt")]
     (testing "should parse all account numbers in a file"
       (is (= 11 (count account-numbers)))
       (is (= account-numbers
