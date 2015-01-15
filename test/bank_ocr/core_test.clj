@@ -499,33 +499,27 @@
   (testing "should not validate 012345678"
     (is (not (valid-account-number? [0 1 2 3 4 5 6 7 8])))))
 
-(def account-1
-  [" _  _  _  _  _  _  _  _    "
-   "| || || || || || || ||_   |"
-   "|_||_||_||_||_||_||_| _|  |"
-   "                           "])
-
-(def account-2
-  ["    _  _  _  _  _  _     _ "
-   "|_||_|| || ||_   |  |  | _ "
-   "  | _||_||_||_|  |  |  | _|"
-   "                           "])
-
-(def account-3
-  ["    _  _     _  _  _  _  _ "
-   "  | _| _||_| _ |_   ||_||_|"
-   "  ||_  _|  | _||_|  ||_| _ "
-   "                           "])
-
 (deftest illegible-account-numbers
   (testing "should parse 000000051"
-    (is (= (entry->account-number account-1)
+    (is (= (entry->account-number
+            [" _  _  _  _  _  _  _  _    "
+             "| || || || || || || ||_   |"
+             "|_||_||_||_||_||_||_| _|  |"
+             "                           "])
            [0 0 0 0 0 0 0 5 1])))
   (testing "should parse 49006771? with errors"
-    (is (= (entry->account-number account-2)
+    (is (= (entry->account-number
+            ["    _  _  _  _  _  _     _ "
+             "|_||_|| || ||_   |  |  | _ "
+             "  | _||_||_||_|  |  |  | _|"
+             "                           "])
            [4 9 0 0 6 7 7 1 :?])))
   (testing "should parse 1234?678? with errors"
-    (is (= (entry->account-number account-3)
+    (is (= (entry->account-number
+            ["    _  _     _  _  _  _  _ "
+             "  | _| _||_| _ |_   ||_||_|"
+             "  ||_  _|  | _||_|  ||_| _ "
+             "                           "])
            [1 2 3 4 :? 6 7 8 :?]))))
 
 (deftest annotating-account-numbers
