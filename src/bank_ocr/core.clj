@@ -52,6 +52,7 @@
        (map vec)))
 
 (defn entry->account-number
+  "Convert an entry to an account number (sequence of ints)"
   [entry]
   (->> entry
        entry->digits
