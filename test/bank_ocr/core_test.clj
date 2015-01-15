@@ -492,5 +492,9 @@
     (is (valid-account-number? [1 2 3 4 5 6 7 8 9])))
   (testing "should validate 490867715"
     (is (valid-account-number? [4 9 0 8 6 7 7 1 5])))
-  (testing "should validate 888888888"
-    (is (not (valid-account-number? [8 8 8 8 8 8 8 8 8])))))
+  (testing "should not validate 888888888"
+    (is (not (valid-account-number? [8 8 8 8 8 8 8 8 8]))))
+  (testing "should not validate 490067715"
+    (is (not (valid-account-number? [4 9 0 0 6 7 7 1 5]))))
+  (testing "should not validate 012345678"
+    (is (not (valid-account-number? [0 1 2 3 4 5 6 7 8])))))
