@@ -14,4 +14,10 @@
 
   :dependencies
   [[org.clojure/clojure "1.6.0"]
-   [org.clojure/core.match "0.3.0-alpha4"]])
+   [org.clojure/core.match "0.3.0-alpha4"]]
+
+  :main
+  bank-ocr.core
+
+  :aot
+  [bank-ocr.core])
