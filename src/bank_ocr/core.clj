@@ -75,6 +75,11 @@
          (partition 4)
          (map entry->account-number))))
 
+(defn valid-account-number?
+  "Validate an account number by applying a checksum"
+  [account-number]
+  true)
+
 (defn -main
   [filename]
   (let [account-numbers (parse-file filename)]

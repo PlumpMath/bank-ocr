@@ -482,3 +482,7 @@
               [8 8 8 8 8 8 8 8 8]
               [9 9 9 9 9 9 9 9 9]
               [1 2 3 4 5 6 7 8 9]])))))
+
+(deftest validating-account-numbers
+  (testing "should validate 345882865"
+    (is (valid-account-number? [3 4 5 8 8 2 8 6 5]))))
