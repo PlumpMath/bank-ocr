@@ -527,3 +527,14 @@
   (testing "should parse 1234?678? with errors"
     (is (= (entry->account-number account-3)
            [1 2 3 4 :? 6 7 8 :?]))))
+
+(deftest annotating-account-numbers
+  (testing "legible and validated account numbers should not be annotated"
+    (is (= (print-account-number [0 0 0 0 0 0 0 5 1])
+           "000000051"))
+    (is (= (print-account-number [7 1 1 1 1 1 1 1 1])
+           "711111111"))
+    (is (= (print-account-number [1 2 3 4 5 6 7 8 9])
+           "123456789"))
+    (is (= (print-account-number [4 9 0 8 6 7 7 1 5])
+           "490867715"))))

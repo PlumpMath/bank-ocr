@@ -84,6 +84,11 @@
                  (reduce +))]
     (zero? (mod sum 11))))
 
+(defn print-account-number
+  "Return an account-number as a string with annotations"
+  [account-number]
+  "000000051")
+
 (defn -main
   [filename]
   (let [account-numbers (parse-file filename)]
